@@ -135,7 +135,7 @@
             this.groupBox6.Size = new System.Drawing.Size(179, 47);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Size";
+            this.groupBox6.Text = "Tile size (px)";
             // 
             // numericUpDown_size
             // 
@@ -185,7 +185,7 @@
             this.groupBox4.Size = new System.Drawing.Size(179, 81);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Controls";
+            this.groupBox4.Text = "Actions";
             // 
             // button_stop
             // 
@@ -218,7 +218,7 @@
             this.groupBox3.Size = new System.Drawing.Size(179, 47);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Rows";
+            this.groupBox3.Text = "Rows (px)";
             // 
             // numericUpDown_height
             // 
@@ -259,7 +259,7 @@
             this.groupBox2.Size = new System.Drawing.Size(179, 49);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Collums";
+            this.groupBox2.Text = "Collums (px)";
             // 
             // numericUpDown_width
             // 
@@ -313,13 +313,13 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(80, 25);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(79, 25);
             this.toolStripStatusLabel1.Text = "Time elapsed:";
             // 
             // toolStripStatusLabel_timeelapsed
             // 
             this.toolStripStatusLabel_timeelapsed.Name = "toolStripStatusLabel_timeelapsed";
-            this.toolStripStatusLabel_timeelapsed.Size = new System.Drawing.Size(84, 25);
+            this.toolStripStatusLabel_timeelapsed.Size = new System.Drawing.Size(83, 25);
             this.toolStripStatusLabel_timeelapsed.Text = "TIME ELAPSED";
             // 
             // backgroundWorker_worker
