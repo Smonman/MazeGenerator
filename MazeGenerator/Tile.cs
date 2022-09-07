@@ -6,28 +6,28 @@ namespace MazeGenerator1
 {
     class Tile
     {
-        Random r;
+        private Random r;
         public int x;
         public int y;
         public int xPos;
         public int yPos;
-        int s;
         public bool visited;
         public bool[] walls;
 
-        int cols;
-        int rows;
+        private int s;
+        private int cols;
+        private int rows;
 
-        public Tile(int x, int y, int s, int cols, int rows, Random rand)
+        public Tile(int x, int y, int s, int cols, int rows, Random r)
         {
-            r = rand;
+            this.r = r;
             this.x = x;
             this.y = y;
             this.s = s;
-            xPos = this.x * this.s;
-            yPos = this.y * this.s;
-            visited = false;
-            walls = new bool[] { true, true, true, true };
+            this.xPos = this.x * this.s;
+            this.yPos = this.y * this.s;
+            this.visited = false;
+            this.walls = new bool[] { true, true, true, true };
             this.cols = cols;
             this.rows = rows;
         }
@@ -97,14 +97,17 @@ namespace MazeGenerator1
             {
                 neigbors.Add(top);
             }
+
             if (right != null && !right.visited)
             {
                 neigbors.Add(right);
             }
+
             if (bottom != null && !bottom.visited)
             {
                 neigbors.Add(bottom);
             }
+
             if (left != null && !left.visited)
             {
                 neigbors.Add(left);
@@ -128,6 +131,7 @@ namespace MazeGenerator1
             Tile right;
             Tile bottom;
             Tile left;
+
             if (GetIndex(x, y + 1) == null)
             {
                 top = null;
@@ -136,6 +140,7 @@ namespace MazeGenerator1
             {
                 top = g[GetIndex(x, y + 1).Item1, GetIndex(x, y + 1).Item2];
             }
+
             if (GetIndex(x + 1, y) == null)
             {
                 right = null;
@@ -144,6 +149,7 @@ namespace MazeGenerator1
             {
                 right = g[GetIndex(x + 1, y).Item1, GetIndex(x + 1, y).Item2];
             }
+
             if (GetIndex(x, y - 1) == null)
             {
                 bottom = null;
@@ -152,6 +158,7 @@ namespace MazeGenerator1
             {
                 bottom = g[GetIndex(x, y - 1).Item1, GetIndex(x, y - 1).Item2];
             }
+
             if (GetIndex(x - 1, y) == null)
             {
                 left = null;
@@ -165,18 +172,22 @@ namespace MazeGenerator1
             {
                 count++;
             }
+
             if (right != null && !right.visited)
             {
                 count++;
             }
+
             if (bottom != null && !bottom.visited)
             {
                 count++;
             }
+
             if (left != null && !left.visited)
             {
                 count++;
             }
+
             return count;
         }
 
@@ -184,18 +195,22 @@ namespace MazeGenerator1
         {
             Pen p = new Pen(new SolidBrush(Color.Black));
             p.Width = 1;
+
             if (walls[0])
             {
                 g.DrawLine(p, xPos, yPos, xPos + s, yPos);
             }
+
             if (walls[1])
             {
                 g.DrawLine(p, xPos + s, yPos, xPos + s, yPos + s);
             }
+
             if (walls[2])
             {
                 g.DrawLine(p, xPos + s, yPos + s, xPos, yPos + s);
             }
+
             if (walls[3])
             {
                 g.DrawLine(p, xPos, yPos + s, xPos, yPos);

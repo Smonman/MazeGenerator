@@ -18,22 +18,19 @@ namespace MazeGenerator1
             InitializeComponent();
         }
 
-        Random r;
-
-        Bitmap maze;
-        Graphics g;
-        Tile[,] grid;
-        Stack<Tile> stack;
-        int size;
-        int width;
-        int height;
-        int cols;
-        int rows;
-
-        bool drawEveryStep;
-        bool finished;
-
-        Stopwatch sw;
+        private Random r;
+        private Bitmap maze;
+        private Graphics g;
+        private Tile[,] grid;
+        private Stack<Tile> stack;
+        private int size;
+        private int width;
+        private int height;
+        private int cols;
+        private int rows;
+        private bool drawEveryStep;
+        private bool finished;
+        private Stopwatch sw;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -49,22 +46,22 @@ namespace MazeGenerator1
 
         void GetInput()
         {
-            width = (int)numericUpDown_width.Value;
-            height = (int)numericUpDown_height.Value;
-            size = (int)numericUpDown_size.Value;
-            cols = width / size;
-            rows = height / size;
-            drawEveryStep = checkBox_drawEveryStep.Checked;
+            this.width = (int)numericUpDown_width.Value;
+            this.height = (int)numericUpDown_height.Value;
+            this.size = (int)numericUpDown_size.Value;
+            this.cols = width / size;
+            this.rows = height / size;
+            this.drawEveryStep = checkBox_drawEveryStep.Checked;
         }
 
         void Setup()
         {
-            r = new Random();
-            maze = new Bitmap(cols * size + 1, rows * size + 1);
-            g = Graphics.FromImage(maze);
-            grid = new Tile[cols, rows];
-            stack = new Stack<Tile>();
-            finished = false;
+            this.r = new Random();
+            this.maze = new Bitmap(cols * size + 1, rows * size + 1);
+            this.g = Graphics.FromImage(maze);
+            this.grid = new Tile[cols, rows];
+            this.stack = new Stack<Tile>();
+            this.finished = false;
             for (int x = 0; x < grid.GetLength(0); x++)
             {
                 for (int y = 0; y < grid.GetLength(1); y++)
@@ -72,7 +69,7 @@ namespace MazeGenerator1
                     grid[x, y] = new Tile(x, y, size, cols, rows, r);
                 }
             }
-            sw = new Stopwatch();
+            this.sw = new Stopwatch();
         }
 
         private void backgroundWorker_worker_DoWork(object sender, DoWorkEventArgs e)
@@ -100,7 +97,7 @@ namespace MazeGenerator1
                         stackList.RemoveAt(i);
                     }
                 }
-                stack = new Stack<Tile>(stackList);
+                this.stack = new Stack<Tile>(stackList);
                 nextTile = curTile.GetNextNeighbor(grid);
                 if (nextTile != null)
                 {
@@ -115,7 +112,6 @@ namespace MazeGenerator1
                     visitedTiles++;
                     percentage = (int)Math.Floor(((float)visitedTiles / tileCount) * 100);
                     backgroundWorker_worker.ReportProgress(percentage);
-                    //Console.WriteLine(percentage + "% | Tile count: " + tileCount + " | Cur Tile Count: " + visitedTiles);
                 }
                 else if (stack.Count > 0)
                 {
@@ -123,8 +119,9 @@ namespace MazeGenerator1
                 }
                 else
                 {
-                    finished = true;
+                    this.finished = true;
                 }
+
                 if (drawEveryStep)
                 {
                     Draw();
@@ -138,6 +135,7 @@ namespace MazeGenerator1
         {
             int x = cur.x - next.x;
             int y = cur.y - next.y;
+
             if (x == 1)
             {
                 cur.walls[3] = false;
@@ -148,6 +146,7 @@ namespace MazeGenerator1
                 cur.walls[1] = false;
                 next.walls[3] = false;
             }
+
             if (y == 1)
             {
                 cur.walls[0] = false;
@@ -177,7 +176,6 @@ namespace MazeGenerator1
             Setup();
             sw.Start();
             backgroundWorker_worker.RunWorkerAsync();
-
             button_generate.Enabled = false;
             button_stop.Enabled = true;
             TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Normal, Handle);
@@ -197,11 +195,11 @@ namespace MazeGenerator1
         void Finish()
         {
             sw.Stop();
-            Draw();
             backgroundWorker_worker.CancelAsync();
             button_generate.Invoke((MethodInvoker)(() => button_generate.Enabled = true));
             button_stop.Invoke((MethodInvoker)(() => button_stop.Enabled = false));
             TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress, Handle);
+            Draw();
         }
 
         private void backgroundWorker_worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
