@@ -218,7 +218,7 @@
             this.groupBox3.Size = new System.Drawing.Size(179, 47);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Rows (px)";
+            this.groupBox3.Text = "Height (px)";
             // 
             // numericUpDown_height
             // 
@@ -259,7 +259,7 @@
             this.groupBox2.Size = new System.Drawing.Size(179, 49);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Collums (px)";
+            this.groupBox2.Text = "Width (px)";
             // 
             // numericUpDown_width
             // 
