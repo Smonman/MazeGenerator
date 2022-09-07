@@ -1,2 +1,0 @@
-only use 2 walls right and down
-add 1 pixel on the side of the image to draw all the lines
