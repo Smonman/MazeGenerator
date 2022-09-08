@@ -15,7 +15,7 @@ After starting the program you simply type in the values needed on the right sid
 
 After filling in the required values, hit __Generate__ to generate the maze image. After a successfull generation, the maze might be saved by pressing the __Save__ button.
 
-Note, that each generation, even with the same input value, might result in a completely different maze.
+> **Note**: each generation, even with the same input values, might result in a completely different maze.
 
 ## Known issue
 
