@@ -1,6 +1,6 @@
 # MazeGenerator
 
-A simple program to generate solveable mazes. These mazes can then be saves as images.
+A simple program to generate solveable mazes. These mazes can then be saved as images.
 
 ![image](https://user-images.githubusercontent.com/36928284/188883010-fe818e87-c526-4074-8fbc-ab4e655eea1b.png)
 
